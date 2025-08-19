@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Village Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+             /*background-color: #f7cde0;*/
+            text-align: center;
+            
+        }
+
+        /* Heading with Creepers */
+        .heading-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 30px;
+            border: 1px solid black;
+            font-size: 28px;
+            font-weight: bold;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .heading-wrapper::before,
+        .heading-wrapper::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url('assets/allu.png') repeat-x center;
+            background-size: contain;
+        }
+        .heading-wrapper::before { top: -50px; }
+        .heading-wrapper::after { bottom: -50px; }
+
+        /* Video Container */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 100px;
+        }
+
+        /* Video Card */
+        .video-card {
+            background: lightgray;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 550px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .video-title {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .btn {
+            flex: 1;
+            padding: 6px 8px;
+            border-radius: 8px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            background: linear-gradient(45deg, #1e88e5, #42a5f5);
+            color: white;
+            font-weight: bold;
+        }
+        .btn:hover { background: linear-gradient(45deg, #2e7d32, #66bb6a); }
+        .btn-like.liked { background: linear-gradient(45deg, #1e88e5, #42a5f5); }
+
+        /* Comment Popup */
+        .comment-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+            width: 350px;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -45%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        .comment-popup h3 { margin-top: 0; color: #fff; }
+        .comment-box {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .comment-box input {
+            flex: 1;
+            padding: 6px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+        }
+        .comment {
+            background: rgba(255,255,255,0.8);
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .view-comments-btn {
+            margin-top: 8px;
+            background: #fff;
+            color: #333;
+            border-radius: 6px;
+            padding: 5px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .close-popup {
+            background: #ff3b3b;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            float: right;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="heading-wrapper">
+    <span style="color:#071d6e;">My Village Videos</span> (<span style="color:#42f58d;">AnatiKandrika</span>)
+</div>
+
+<div class="video-container">
+    <div class="video-card">
+    <video controls>
+        <source src="https://archive.org/download/untitled-1080p_202508/Untitled_1080p.mp4" type="video/mp4">
+    </video>
+    <div class="video-title">Vinayaka Chavithi 2024</div>
+    <div class="actions">
+        <button class="btn btn-play">▶ Play</button>
+        <button class="btn btn-like">❤️ 0</button>
+        <button class="btn btn-comment">💬 Comment</button>
+        <button class="btn btn-share">🔗 Share</button>
+        <button class="btn btn-download">⬇ Download</button>
+    </div>
+</div>
+
+   <div class="video-card">
+        <video controls>
+            <source src="https://archive.org/download/untitled-166-1080p-2/Untitled 166_1080p-2.mp4" type="video/mp4">
+        </video>
+        <div class="video-title">My Direction Cover video</div>
+        <div class="actions">
+            <button class="btn btn-play">▶ Play</button>
+            <button class="btn btn-like">❤️ 0</button>
+            <button class="btn btn-comment">💬 Comment</button>
+            <button class="btn btn-share">🔗 Share</button>
+            <button class="btn btn-download">⬇ Download</button>
+        </div>
+    </div>
+
+
+    <div class="video-card">
+        <video controls>
+            <source src="https://archive.org/download/untitled-1080p_202508/Untitled_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="video-title">Vinayaka Chavithi 2024</div>
+        <div class="actions">
+            <button class="btn btn-play">▶ Play</button>
+            <button class="btn btn-like">❤️ 0</button>
+            <button class="btn btn-comment">💬 Comment</button>
+            <button class="btn btn-share">🔗 Share</button>
+            <button class="btn btn-download">⬇ Download</button>
+        </div>
+    </div>
+  <div style="text-align:center; margin-top:40px;">
+  <h2 style="font-family: 'Segoe UI', sans-serif; font-weight:bold; display: inline-flex; align-items:center; gap:10px;">
+    
+    <!-- Left Bow -->
+    <!--
+    <!--<span style="font-size: 1.8em; color: sienna;">🏹</span>
+    
+    
+    <span style="color:green;">ITS ME VENKATESH</span>
+    
+   
+    <span style="font-size: 1.8em; color: sienna; transform: scaleX(-1);">🏹</span>
+  </h2>
+</div>
+-->
+<div style="text-align:center;">
+  <h2 style="font-family: 'Segoe UI', sans-serif; font-weight:bold; display: inline-flex; align-items:center; gap:15px;">
+
+    <!-- Left Arrow -->
+    <span style="color:gold; font-size:0.7em;">&#x27A4;─────────&#x27A4;</span>
+
+    <!-- Text -->
+    <span style="color:green;">ITS ME VENKATESH</span>
+
+    <!-- Right Arrow -->
+    <span style="color:gold; font-size:0.7em;">&#x27A4;─────────&#x27A4;</span>
+    
+  </h2>
+</div>
+
+
+
+<!-- Comment Popup -->
+<div class="comment-popup" id="commentPopup">
+    <button class="close-popup">✖</button>
+    <h3>Comments</h3>
+    <div class="comment-box">
+        <input type="text" placeholder="Add a comment...">
+        <button class="btn-add-comment">Post</button>
+    </div>
+    <button class="view-comments-btn">View Previous Comments</button>
+    <div class="comments-list"></div>
+</div>
+<script>
+    // Get all videos dynamically
+    function getAllVideos() {
+        return Array.from(document.querySelectorAll('video'));
+    }
+
+    // Only one video plays at a time (native play event)
+    document.addEventListener('play', function (e) {
+        if (e.target.tagName === 'VIDEO') {
+            getAllVideos().forEach(v => {
+                if (v !== e.target) v.pause();
+            });
+        }
+    }, true);
+
+    // Play/Pause button logic
+    document.querySelectorAll('.btn-play').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const video = btn.closest('.video-card').querySelector('video');
+            
+            // Pause all other videos before playing this one
+            getAllVideos().forEach(v => {
+                if (v !== video) v.pause();
+            });
+
+            if (video.paused) {
+                video.play();
+                btn.textContent = '⏸';
+            } else {
+                video.pause();
+                btn.textContent = '▶ Play';
+            }
+        });
+    });
+
+    // Like functionality
+    document.querySelectorAll('.btn-like').forEach(btn => {
+        btn.addEventListener('click', () => {
+            let count = parseInt(btn.textContent.replace(/[^0-9]/g, ''));
+            if (btn.classList.contains('liked')) {
+                btn.classList.remove('liked');
+                count--;
+            } else {
+                btn.classList.add('liked');
+                count++;
+            }
+            btn.textContent = `❤️ ${count}`;
+        });
+    });
+
+    // Comment popup open/close
+    const popup = document.getElementById('commentPopup');
+    document.querySelectorAll('.btn-comment').forEach(btn => {
+        btn.addEventListener('click', () => {
+            popup.style.display = 'block';
+        });
+    });
+    document.querySelector('.close-popup').addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    // Add comment
+    document.querySelector('.btn-add-comment').addEventListener('click', () => {
+        const input = document.querySelector('.comment-box input');
+        const text = input.value.trim();
+        if (text) {
+            const commentList = document.querySelector('.comments-list');
+            const div = document.createElement('div');
+            div.className = 'comment';
+            div.textContent = text;
+            commentList.appendChild(div);
+            input.value = '';
+        }
+    });
+
+    // View comments
+    document.querySelector('.view-comments-btn').addEventListener('click', () => {
+        alert('Previous comments will be loaded here!');
+    });
+
+    // Share functionality
+    document.querySelectorAll('.btn-share').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const videoTitle = btn.closest('.video-card').querySelector('.video-title').textContent;
+            if (navigator.share) {
+                navigator.share({
+                    title: videoTitle,
+                    text: `Check out this video: ${videoTitle}`,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(`Check out this video: ${videoTitle} - ${window.location.href}`);
+                alert('Video link copied to clipboard!');
+            }
+        });
+    });
+
+    // Download functionality
+    document.querySelectorAll('.btn-download').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const video = btn.closest('.video-card').querySelector('video source').src;
+            const a = document.createElement('a');
+            a.href = video;
+            a.download = 'video.mp4';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    });
+</script>
+</body>
+</html>
